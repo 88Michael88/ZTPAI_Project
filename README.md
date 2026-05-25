@@ -1,4 +1,13 @@
-# GIT HUB LINK:
+This readme is divided into a few parts:
+1. GITHUB LINK,
+2. Execution,
+3. Shop directory,
+4. Reviewer Directory,
+5. Documentation.
+
+Use Ctr-F, to jump to the part you are most interested in.
+
+# GITHUB LINK:
 https://github.com/88Michael88/ZTPAI_Project
 
 # Execution:
