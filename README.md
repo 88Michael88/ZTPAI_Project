@@ -1,3 +1,6 @@
+> [!Important]
+> This repository DOES NOT HAVE the video presenting the project.
+
 This readme is divided into a few parts:
 1. GITHUB LINK,
 2. Execution,
