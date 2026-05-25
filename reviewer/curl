@@ -1,0 +1,41 @@
+docker run -d \
+--hostname rabbitmq \
+--name rabbitmq \
+-p 5672:5672 \
+-p 15672:15672 \
+rabbitmq:4-management
+
+curl -X POST http://localhost:3000/api/users/register \
+         -H "Content-Type: application/json" \
+         -d '{ \
+             "username": "john_doe", \
+                 "password": "securePassword123", \
+                 "email": "john@example.com", \
+                 "role": "USER" \
+         }'
+
+curl -X POST http://localhost:3000/api/users/login \
+         -H "Content-Type: application/json" \
+         -d '{ \
+             "username": "john_doe", \
+                 "password": "securePassword123" \
+         }'
+
+curl -X POST http://localhost:3000/api/users/register \
+         -H "Content-Type: application/json" \
+         -d '{ \
+             "username": "admin_doe", \
+                 "password": "securePassword123", \
+                 "email": "admin@example.com", \
+                 "role": "ADMIN" \
+         }'
+
+curl -X POST http://localhost:3000/api/users/login \
+         -H "Content-Type: application/json" \
+         -d '{ \
+             "username": "admin_doe", \
+                 "password": "securePassword123" \
+         }'
+
+curl -X POST http://localhost:3000/api/getAPIkey \
+         -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huX2RvZSIsImlkIjoxLCJyb2xlIjoiVVNFUiIsImV4cCI6MTc3OT Q0NTgwM30.iTPX7990XRIwpYxfQRg-WW3DFRJsodyZOFvAUnhXN9Q"

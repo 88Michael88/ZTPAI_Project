@@ -1,0 +1,63 @@
+docker run -d \
+  --hostname rabbitmq \
+  --name rabbitmq \
+  -p 5672:5672 \
+  -p 15672:15672 \
+  rabbitmq:4-management
+
+curl -X POST http://localhost:8080/api/users/register \
+         -H "Content-Type: application/json" \
+         -d '{
+             "username": "john_doe",
+                 "password": "securePassword123",
+                 "email": "john@example.com",
+                 "role": "USER"
+         }'
+
+curl -X POST http://localhost:8080/api/users/login \
+         -H "Content-Type: application/json" \
+         -d '{
+             "username": "john_doe",
+                 "password": "securePassword123"
+         }'
+
+curl -X POST http://localhost:8080/api/users/register \
+         -H "Content-Type: application/json" \
+         -d '{
+             "username": "admin_doe",
+                 "password": "securePassword123",
+                 "email": "admin@example.com",
+                 "role": "ADMIN"
+         }'
+
+curl -X POST http://localhost:8080/api/users/login \
+         -H "Content-Type: application/json" \
+         -d '{
+             "username": "admin_doe",
+                 "password": "securePassword123"
+         }'
+
+curl -X POST http://localhost:8080/api/products \
+         -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl9kb2UiLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3Nzg1OTcxMjR9.tTordiswjNJGoOCV3IHi8Ukkpj6NZTkvoFuCMnI1QfQ" \
+         -H "Content-Type: application/json" \
+         -d '{
+             "name": "Laptop",
+                 "price": 2499.99,
+                 "description": "Gaming laptop with RTX GPU"
+         }'
+
+curl -X GET http://localhost:8080/api/products
+
+curl -X GET http://localhost:8080/api/products/1 
+
+curl -X POST http://localhost:8080/api/products/1/reviews \
+         -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl9kb2UiLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3Nzg1OTcxMjR9.tTordiswjNJGoOCV3IHi8Ukkpj6NZTkvoFuCMnI1QfQ" \
+         -H "Content-Type: application/json" \
+         -d '{
+             "review": "Amazing gaming laptop with excellent performance"
+         }'
+
+curl -X GET http://localhost:8080/api/products/1/reviews/1
+
+
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huX2RvZSIsInJvbGUiOiJVU0VSIiwiZXhwIjoxNzc5NDUyNjEwfQ.dlhC0_NDY4JoJ6KQSnV9qB0sx7srI3sN7XUEf5R9Vf4
